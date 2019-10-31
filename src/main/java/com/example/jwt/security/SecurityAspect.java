@@ -28,7 +28,7 @@ public class SecurityAspect {
 
         String token = getTokenFromRequest();
 
-        if (!tokenService.existsByAccessToken(token)) {
+        if (!tokenService.existsByAccessTokenAndCheckDate(token)) {
             throw new RuntimeException();
         }
     }

@@ -3,6 +3,7 @@ package com.example.jwt.service;
 import com.example.jwt.domain.Token;
 import com.example.jwt.domain.User;
 import com.example.jwt.repository.UserRepository;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,13 @@ public class UserService {
             throw new RuntimeException();
         }
 
-        return tokenService.create(username);
+        if (tokenService.existsByUsernameAndCheckDate(username)) {
+            Token token = tokenService.findByUsername(username);
+            token.setDate(DateTime.now());
+            return token;
+        } else {
+            return tokenService.create(username);
+        }
     }
 
     public User findByUsername(String username) {

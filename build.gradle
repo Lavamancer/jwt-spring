@@ -29,6 +29,11 @@ dependencies {
 
     runtimeOnly 'mysql:mysql-connector-java'
 
+    implementation 'joda-time:joda-time:2.9.9'
+    implementation 'org.jadira.usertype:usertype.core:7.0.0.CR1'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.9.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5:2.9.3'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
